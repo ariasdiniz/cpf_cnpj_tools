@@ -37,7 +37,7 @@ module CpfCnpjTools
     # @param cpf (String, Integer)
     # @return Boolean
     def validate_cpf(cpf)
-      cpf_array = cpf.to_s.split('').map!(&:to_i)
+      cpf_array = cpf.to_s.split("").map!(&:to_i)
       first_digit = cpf_array[-2]
       second_digit = cpf_array[-1]
       base_cpf = cpf_array[0..8]
@@ -53,7 +53,7 @@ module CpfCnpjTools
     # @param cnpj (String, Integer)
     # @return Boolean
     def validate_cnpj(cnpj)
-      cnpj_array = cnpj.to_s.split('').map!(&:to_i)
+      cnpj_array = cnpj.to_s.split("").map!(&:to_i)
       first_digit = cnpj_array[-2]
       second_digit = cnpj_array[-1]
       base_cnpj = cnpj_array[0..11]
