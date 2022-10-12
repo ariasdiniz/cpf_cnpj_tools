@@ -16,21 +16,25 @@ module CpfCnpjTools
     ##
     # Method for generating valid CPF numbers
     # @return String
-    def generate_cpf
+    def generate_cpf(formatted: true)
       base = generate_base
       base << generate_identifier(base, true)
       base << generate_identifier(base, false)
-      base.join
+      return base.join unless formatted
+
+      format(base.join)
     end
 
     ##
     # Method for generating valid CNPJ numbers
     # @return String
-    def generate_cnpj
+    def generate_cnpj(formatted: true)
       base = generate_base(cnpj: true)
       base << generate_identifier(base, true, cpf: false)
       base << generate_identifier(base, false, cpf: false)
-      base.join
+      return base.join unless formatted
+
+      format(base.join)
     end
 
     ##
@@ -38,7 +42,7 @@ module CpfCnpjTools
     # @param cpf (String, Integer)
     # @return Boolean
     def cpf_valid?(cpf)
-      cpf_array = cpf.to_s.split("").map!(&:to_i)
+      cpf_array = remove_formatting(cpf.to_s).split("").map!(&:to_i)
       first_digit = cpf_array[-2]
       second_digit = cpf_array[-1]
       base_cpf = cpf_array[0..8]
@@ -54,7 +58,7 @@ module CpfCnpjTools
     # @param cnpj (String, Integer)
     # @return Boolean
     def cnpj_valid?(cnpj)
-      cnpj_array = cnpj.to_s.split("").map!(&:to_i)
+      cnpj_array = remove_formatting(cnpj.to_s).split("").map!(&:to_i)
       first_digit = cnpj_array[-2]
       second_digit = cnpj_array[-1]
       base_cnpj = cnpj_array[0..11]

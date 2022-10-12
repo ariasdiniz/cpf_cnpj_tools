@@ -23,6 +23,8 @@ puts generate.generate_cpf # returns a valid CPF
 puts generate.generate_cnpj # returns a valid cnpj
 puts generate.cpf_valid?("999999900") # validate returning true or false
 puts generate.cnpj_valid?("99999999000100") # validate returning true or false
+puts generate.formatted?("99999999900") # validate if cpf/cnpj is formatted returning true or false
+puts generate.format("16255648800") # return the formatted cpf/cnpj. Ex: 162.556.488-00
 ```
 
 ## Contributing
