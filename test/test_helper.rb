@@ -9,22 +9,38 @@ class Testing < Minitest::Test
   def test_cpf
     gen = CpfCnpjTools::Generator.new
     cpf = gen.generate_cpf
-    assert(gen.validate_cpf(cpf))
+    assert(gen.cpf_valid?(cpf))
   end
 
   def test_invalid_cpf
     gen = CpfCnpjTools::Generator.new
-    assert(!gen.validate_cpf("99999999900"))
+    assert(!gen.cpf_valid?("99999999900"))
   end
 
   def test_cnpj
     gen = CpfCnpjTools::Generator.new
     cnpj = gen.generate_cnpj
-    assert(gen.validate_cnpj(cnpj))
+    assert(gen.cnpj_valid?(cnpj))
   end
 
   def test_invalid_cnpj
     gen = CpfCnpjTools::Generator.new
-    assert(!gen.validate_cnpj("12345678912345"))
+    assert(!gen.cnpj_valid?("12345678912345"))
+  end
+
+  def test_formated_cpf_cnpj
+    gen = CpfCnpjTools::Generator.new
+    cpf = "100.100.100-10"
+    cnpj = "10.100.100/0001-10"
+    assert(gen.formatted?(cpf))
+    assert(gen.formatted?(cnpj))
+  end
+
+  def test_unformatted_cpf_cnpj
+    gen = CpfCnpjTools::Generator.new
+    cpf = gen.generate_cpf
+    cnpj = gen.generate_cnpj
+    assert(!gen.formatted?(cpf))
+    assert(!gen.formatted?(cnpj))
   end
 end

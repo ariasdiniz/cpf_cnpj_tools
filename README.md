@@ -21,8 +21,8 @@ generate = CpfCnpjTools::Generator.new
 
 puts generate.generate_cpf # returns a valid CPF
 puts generate.generate_cnpj # returns a valid cnpj
-puts generate.validate_cpf("999999900") # validate returning true or false
-puts generate.validate_cnpj("99999999000100") # validate returning true or false
+puts generate.cpf_valid?("999999900") # validate returning true or false
+puts generate.cnpj_valid?("99999999000100") # validate returning true or false
 ```
 
 ## Contributing

@@ -36,7 +36,7 @@ module CpfCnpjTools
     # Method for validating CPF numbers.
     # @param cpf (String, Integer)
     # @return Boolean
-    def validate_cpf(cpf)
+    def cpf_valid?(cpf)
       cpf_array = cpf.to_s.split("").map!(&:to_i)
       first_digit = cpf_array[-2]
       second_digit = cpf_array[-1]
@@ -52,7 +52,7 @@ module CpfCnpjTools
     # Method for validating CNPJ numbers.
     # @param cnpj (String, Integer)
     # @return Boolean
-    def validate_cnpj(cnpj)
+    def cnpj_valid?(cnpj)
       cnpj_array = cnpj.to_s.split("").map!(&:to_i)
       first_digit = cnpj_array[-2]
       second_digit = cnpj_array[-1]
@@ -62,6 +62,13 @@ module CpfCnpjTools
       return false if (first_digit != calculated_first_digit) || (second_digit != calculated_second_digit)
 
       true
+    end
+
+    def formatted?(cpf_or_cnpj)
+      number = cpf_or_cnpj.to_s
+      return true if (number =~ /\d{3}\.\d{3}\.\d{3}-\d{2}/) || (number =~ %r{\d{2}\.\d{3}\.\d{3}/0001-\d{2}})
+
+      false
     end
 
     private
