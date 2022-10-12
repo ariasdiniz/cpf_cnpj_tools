@@ -17,3 +17,6 @@ Style/EndOfLine:
 
 Lint/ScriptPermission:
   Enabled: False
+
+Metrics/MethodLength:
+  Max: 15

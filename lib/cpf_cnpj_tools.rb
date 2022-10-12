@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "cpf_cnpj_tools/version"
+require_relative "invalid_cpf_cnpj_format_exception"
 
 module CpfCnpjTools
   ##
@@ -82,6 +83,23 @@ module CpfCnpjTools
       return unformatted unless unformatted.nil?
 
       cpf_or_cnpj.to_s
+    end
+
+    def format(cpf_or_cnpj)
+      if cpf_valid?(cpf_or_cnpj)
+        cpf = cpf_or_cnpj.to_s.dup
+        cpf.insert(3, ".")
+           .insert(7, ".")
+           .insert(-3, "-")
+      elsif cnpj_valid?(cpf_or_cnpj)
+        cnpj = cpf_or_cnpj.to_s.dup
+        cnpj.insert(2, ".")
+            .insert(6, ".")
+            .insert(10, "/")
+            .insert(-3, "-")
+      else
+        raise InvalidCpfCnpjFormatError
+      end
     end
 
     private

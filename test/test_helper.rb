@@ -2,6 +2,7 @@
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
 require "cpf_cnpj_tools"
+require "invalid_cpf_cnpj_format_exception"
 
 require "minitest/autorun"
 
@@ -42,6 +43,22 @@ class Testing < Minitest::Test
     cnpj = gen.generate_cnpj
     assert(!gen.formatted?(cpf))
     assert(!gen.formatted?(cnpj))
+  end
+
+  def test_format_cpf_cnpj
+    gen = CpfCnpjTools::Generator.new
+    valid_cpf = "57477136717"
+    valid_cnpj = "52905095000196"
+    wrong_cpf = "99999999900"
+    wrong_cnpj = "52905095000100"
+    assert(gen.format(valid_cpf) == "574.771.367-17")
+    assert(gen.format(valid_cnpj) == "52.905.095/0001-96")
+    assert_raises(InvalidCpfCnpjFormatError) do
+      gen.format(wrong_cnpj)
+    end
+    assert_raises(InvalidCpfCnpjFormatError) do
+      gen.format(wrong_cpf)
+    end
   end
 
   def test_unformat_cpf_cnpj

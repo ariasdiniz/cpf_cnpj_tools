@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ad094d7b-c701-4696-aa6d-20811d69a9f4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/invalid_cpf_cnpj_format_exception.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.rubocop.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.rubocop.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/cpf_cnpj_tools.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/cpf_cnpj_tools.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_helper.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
     </list>
@@ -40,6 +42,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\arias\Documents\Projects\ruby\cpf_cnpj_tools\lib" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
   <component name="TaskManager">
@@ -70,12 +77,27 @@
       </map>
     </option>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="ruby-line">
+          <url>file://$PROJECT_DIR$/lib/cpf_cnpj_tools.rb</url>
+          <line>90</line>
+          <properties myBlockOrdinal="-1">
+            <option name="block-ordinal" value="-1" />
+          </properties>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@TestCpfCnpjTools.rcov" NAME="TestCpfCnpjTools Coverage Results" MODIFIED="1665528330730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_invalid_cpf.rcov" NAME="test_invalid_cpf Coverage Results" MODIFIED="1665588231886" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_invalid_cnpj.rcov" NAME="test_invalid_cnpj Coverage Results" MODIFIED="1665527916319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_cpf_cnpj_wrong_digits.rcov" NAME="test_cpf_cnpj_wrong_digits Coverage Results" MODIFIED="1665588274255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_unformat_cpf_cnpj.rcov" NAME="test_unformat_cpf_cnpj Coverage Results" MODIFIED="1665589610508" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
+    <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_format_cpf_cnpj.rcov" NAME="test_format_cpf_cnpj Coverage Results" MODIFIED="1665591816008" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_cnpj.rcov" NAME="test_cnpj Coverage Results" MODIFIED="1665527920522" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_formated_cpf_cnpj.rcov" NAME="test_formated_cpf_cnpj Coverage Results" MODIFIED="1665587242124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
     <SUITE FILE_PATH="coverage/cpf_cnpj_tools@test_formatted_cpf_cnpj.rcov" NAME="test_formatted_cpf_cnpj Coverage Results" MODIFIED="1665587088118" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="cpf_cnpj_tools" />
