@@ -69,6 +69,11 @@ module CpfCnpjTools
       true
     end
 
+    ##
+    # Return true if the CPF/CNPJ is formatted.
+    # Return false if not.
+    # @param cpf_or_cnpj (String, Integer)
+    # @return Boolean
     def formatted?(cpf_or_cnpj)
       number = cpf_or_cnpj.to_s
       return true if (number =~ /\d{3}\.\d{3}\.\d{3}-\d{2}/) || (number =~ %r{\d{2}\.\d{3}\.\d{3}/0001-\d{2}})
@@ -89,6 +94,10 @@ module CpfCnpjTools
       cpf_or_cnpj.to_s
     end
 
+    ##
+    # Returns a String containing a formatted CPF/CNPJ.
+    # @param cpf_or_cnpj (String, Integer)
+    # @return String
     def format(cpf_or_cnpj)
       if cpf_valid?(cpf_or_cnpj)
         cpf = cpf_or_cnpj.to_s.dup
