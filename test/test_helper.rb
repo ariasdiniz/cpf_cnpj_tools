@@ -43,4 +43,14 @@ class Testing < Minitest::Test
     assert(!gen.formatted?(cpf))
     assert(!gen.formatted?(cnpj))
   end
+
+  def test_unformat_cpf_cnpj
+    gen = CpfCnpjTools::Generator.new
+    cpf = "999.999.999-99"
+    cnpj = "99.999.999/0001-99"
+    unformatted_value = "99999999999"
+    assert(gen.remove_formatting(cpf) == "99999999999")
+    assert(gen.remove_formatting(cnpj) == "99999999000199")
+    assert(gen.remove_formatting(unformatted_value) == "99999999999")
+  end
 end

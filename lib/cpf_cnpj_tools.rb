@@ -71,6 +71,19 @@ module CpfCnpjTools
       false
     end
 
+    ##
+    # Returns an unformatted CPF or CNPJ.
+    # If the value is already unformatted,
+    # the method returns the value passed as argument.
+    # @param cpf_or_cnpj (String, Integer)
+    # @return String
+    def remove_formatting(cpf_or_cnpj)
+      unformatted = cpf_or_cnpj.to_s.delete("./-")
+      return unformatted unless unformatted.nil?
+
+      cpf_or_cnpj.to_s
+    end
+
     private
 
     ##
