@@ -14,3 +14,6 @@ Layout/LineLength:
 
 Style/EndOfLine:
   Enabled: False
+
+Lint/ScriptPermissions:
+  Enabled: False
