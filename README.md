@@ -19,8 +19,8 @@ require "cpf_cnpj_tools"
 
 generate = CpfCnpjTools::Generator.new
 
-puts generate.generate_cpf # returns a valid CPF
-puts generate.generate_cnpj # returns a valid cnpj
+puts generate.generate_cpf(formatted: false) # returns a valid CPF
+puts generate.generate_cnpj(formatted: false) # returns a valid cnpj
 puts generate.cpf_valid?("999999900") # validate returning true or false
 puts generate.cnpj_valid?("99999999000100") # validate returning true or false
 puts generate.formatted?("99999999900") # validate if cpf/cnpj is formatted returning true or false
