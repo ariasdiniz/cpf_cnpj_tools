@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "cpf_cnpj_tools/version"
+require_relative "invalid_cpf_cnpj_format_exception"
 
 module CpfCnpjTools
   ##
@@ -15,29 +16,33 @@ module CpfCnpjTools
     ##
     # Method for generating valid CPF numbers
     # @return String
-    def generate_cpf
+    def generate_cpf(formatted: true)
       base = generate_base
       base << generate_identifier(base, true)
       base << generate_identifier(base, false)
-      base.join
+      return base.join unless formatted
+
+      format(base.join)
     end
 
     ##
     # Method for generating valid CNPJ numbers
     # @return String
-    def generate_cnpj
+    def generate_cnpj(formatted: true)
       base = generate_base(cnpj: true)
       base << generate_identifier(base, true, cpf: false)
       base << generate_identifier(base, false, cpf: false)
-      base.join
+      return base.join unless formatted
+
+      format(base.join)
     end
 
     ##
     # Method for validating CPF numbers.
     # @param cpf (String, Integer)
     # @return Boolean
-    def validate_cpf(cpf)
-      cpf_array = cpf.to_s.split("").map!(&:to_i)
+    def cpf_valid?(cpf)
+      cpf_array = remove_formatting(cpf.to_s).split("").map!(&:to_i)
       first_digit = cpf_array[-2]
       second_digit = cpf_array[-1]
       base_cpf = cpf_array[0..8]
@@ -52,8 +57,8 @@ module CpfCnpjTools
     # Method for validating CNPJ numbers.
     # @param cnpj (String, Integer)
     # @return Boolean
-    def validate_cnpj(cnpj)
-      cnpj_array = cnpj.to_s.split("").map!(&:to_i)
+    def cnpj_valid?(cnpj)
+      cnpj_array = remove_formatting(cnpj.to_s).split("").map!(&:to_i)
       first_digit = cnpj_array[-2]
       second_digit = cnpj_array[-1]
       base_cnpj = cnpj_array[0..11]
@@ -62,6 +67,43 @@ module CpfCnpjTools
       return false if (first_digit != calculated_first_digit) || (second_digit != calculated_second_digit)
 
       true
+    end
+
+    def formatted?(cpf_or_cnpj)
+      number = cpf_or_cnpj.to_s
+      return true if (number =~ /\d{3}\.\d{3}\.\d{3}-\d{2}/) || (number =~ %r{\d{2}\.\d{3}\.\d{3}/0001-\d{2}})
+
+      false
+    end
+
+    ##
+    # Returns an unformatted CPF or CNPJ.
+    # If the value is already unformatted,
+    # the method returns the value passed as argument.
+    # @param cpf_or_cnpj (String, Integer)
+    # @return String
+    def remove_formatting(cpf_or_cnpj)
+      unformatted = cpf_or_cnpj.to_s.delete("./-")
+      return unformatted unless unformatted.nil?
+
+      cpf_or_cnpj.to_s
+    end
+
+    def format(cpf_or_cnpj)
+      if cpf_valid?(cpf_or_cnpj)
+        cpf = cpf_or_cnpj.to_s.dup
+        cpf.insert(3, ".")
+           .insert(7, ".")
+           .insert(-3, "-")
+      elsif cnpj_valid?(cpf_or_cnpj)
+        cnpj = cpf_or_cnpj.to_s.dup
+        cnpj.insert(2, ".")
+            .insert(6, ".")
+            .insert(10, "/")
+            .insert(-3, "-")
+      else
+        raise InvalidCpfCnpjFormatError
+      end
     end
 
     private
