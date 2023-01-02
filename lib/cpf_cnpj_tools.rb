@@ -15,6 +15,7 @@ module CpfCnpjTools
 
     ##
     # Method for generating valid CPF numbers
+    # @param {Boolean} formatted
     # @return String
     def generate_cpf(formatted: true)
       base = generate_base
@@ -27,6 +28,7 @@ module CpfCnpjTools
 
     ##
     # Method for generating valid CNPJ numbers
+    # @param {Boolean} formatted
     # @return String
     def generate_cnpj(formatted: true)
       base = generate_base(cnpj: true)
@@ -39,8 +41,8 @@ module CpfCnpjTools
 
     ##
     # Method for validating CPF numbers.
-    # @param cpf (String, Integer)
-    # @return Boolean
+    # @param {String, Integer} cpf
+    # @return bool
     def cpf_valid?(cpf)
       cpf_array = remove_formatting(cpf.to_s).split("").map!(&:to_i)
       first_digit = cpf_array[-2]
@@ -55,8 +57,8 @@ module CpfCnpjTools
 
     ##
     # Method for validating CNPJ numbers.
-    # @param cnpj (String, Integer)
-    # @return Boolean
+    # @param {Integer, String} cpf
+    # @return bool
     def cnpj_valid?(cnpj)
       cnpj_array = remove_formatting(cnpj.to_s).split("").map!(&:to_i)
       first_digit = cnpj_array[-2]
@@ -72,8 +74,8 @@ module CpfCnpjTools
     ##
     # Return true if the CPF/CNPJ is formatted.
     # Return false if not.
-    # @param cpf_or_cnpj (String, Integer)
-    # @return Boolean
+    # @param {String, Integer} cpf_or_cnpj
+    # @return bool
     def formatted?(cpf_or_cnpj)
       number = cpf_or_cnpj.to_s
       return true if (number =~ /\d{3}\.\d{3}\.\d{3}-\d{2}/) || (number =~ %r{\d{2}\.\d{3}\.\d{3}/0001-\d{2}})
@@ -85,7 +87,7 @@ module CpfCnpjTools
     # Returns an unformatted CPF or CNPJ.
     # If the value is already unformatted,
     # the method returns the value passed as argument.
-    # @param cpf_or_cnpj (String, Integer)
+    # @param {String, Integer} cpf_or_cnpj
     # @return String
     def remove_formatting(cpf_or_cnpj)
       unformatted = cpf_or_cnpj.to_s.delete("./-")
@@ -96,7 +98,7 @@ module CpfCnpjTools
 
     ##
     # Returns a String containing a formatted CPF/CNPJ.
-    # @param cpf_or_cnpj (String, Integer)
+    # @param {String, Integer} cpf_or_cnpj
     # @return String
     def format(cpf_or_cnpj)
       if cpf_valid?(cpf_or_cnpj)
