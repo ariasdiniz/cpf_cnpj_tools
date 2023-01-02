@@ -1,0 +1,20 @@
+module CpfCnpjTools
+  class Generator
+    CNPJ1DIGIT: Array[Integer]
+    CNPJ2DIGIT: Array[Integer]
+    CPF1DIGIT: Array[Integer]
+    CPF2DIGIT: Array[Integer]
+
+    def cnpj_valid?: -> bool
+
+    def cpf_valid?: -> bool
+
+    def formatted?: -> bool
+
+    def generate_cnpj: -> String
+
+    def generate_cpf: -> String
+
+    def remove_formatting: -> String
+  end
+end
