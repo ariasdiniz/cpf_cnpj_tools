@@ -117,6 +117,32 @@ module CpfCnpjTools
       end
     end
 
+    ##
+    # Returns an array of valid random generated CPF numbers
+    # @param {Integer} number
+    # @param {bool} formatted
+    # @return {Array[String]}
+    def generate_array_of_cpf(number, formatted: true)
+      array = []
+      number.times do
+        array << generate_cpf(formatted: formatted)
+      end
+      array
+    end
+
+    ##
+    # Returns an array of valid random generated CNPJ numbers
+    # @param {Integer} number
+    # @param {bool} formatted
+    # @return {Array[String]}
+    def generate_array_of_cnpj(number, formatted: true)
+      array = []
+      number.times do
+        array << generate_cnpj(formatted: formatted)
+      end
+      array
+    end
+
     private
 
     ##
