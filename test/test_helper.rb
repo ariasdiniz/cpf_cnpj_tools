@@ -72,4 +72,22 @@ class Testing < Minitest::Test
     assert(gen.remove_formatting(cnpj) == "99999999000199")
     assert(gen.remove_formatting(unformatted_value) == "99999999999")
   end
+
+  def test_generate_array_of_valid_cpfs
+    gen = CpfCnpjTools::Generator.new
+    array = gen.generate_array_of_cpf(10)
+    invalid = false
+    array.map { |item| gen.cpf_valid?(item) }
+    assert !array.include?(invalid)
+    assert array.length == 10
+  end
+
+  def test_generate_array_of_valid_cnpjs
+    gen = CpfCnpjTools::Generator.new
+    array = gen.generate_array_of_cnpj(10)
+    invalid = false
+    array.map { |item| gen.cnpj_valid?(item) }
+    assert !array.include?(invalid)
+    assert array.length == 10
+  end
 end

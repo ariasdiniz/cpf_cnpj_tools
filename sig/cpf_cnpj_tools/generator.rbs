@@ -11,6 +11,10 @@ module CpfCnpjTools
 
     def formatted?: -> bool
 
+    def generate_array_of_cnpj: -> Array[String]
+
+    def generate_array_of_cpf: -> Array[String]
+
     def generate_cnpj: -> String
 
     def generate_cpf: -> String
