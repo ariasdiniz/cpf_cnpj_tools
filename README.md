@@ -1,5 +1,8 @@
 # CpfCnpjTools
 
+A simple and very efficient Ruby Gem to validate and generate CPF and CNPJ values.
+** It supports the new alphanumeric CNPJ format!!! **
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
