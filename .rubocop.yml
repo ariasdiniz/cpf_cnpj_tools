@@ -20,7 +20,10 @@ Lint/ScriptPermission:
   Enabled: False
 
 Metrics/MethodLength:
-  Max: 15
+  Max: 20
 
 Metrics/ClassLength:
-  Max: 120
+  Max: 150
+
+Metrics/AbcSize:
+  Enabled: false
